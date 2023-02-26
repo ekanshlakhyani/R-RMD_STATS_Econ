@@ -1,0 +1,78 @@
+---
+title: "assign2"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Assignment 3
+##Econ 221
+
+Ans1) 
+```{r}
+a3q1dta <- read.csv("~/Downloads/a3q1dta.csv")
+```
+i)
+```{r}
+mstng <- a3q1dta$x
+lmbgn <- a3q1dta$y[1:25]
+ians<-mean(mstng)-mean(lmbgn)
+ians
+```
+ii)
+```{r}
+var_lamb<-var(lmbgn)
+var_must<-var(mstng)
+len_lamb<-length(lmbgn)
+len_must<-length(mstng)
+pooling_variance<-((len_must-1)*var_must+(len_lamb-2)*var_lamb)/(len_must+len_lamb-2)
+pooling_variance
+```
+iii)
+```{r}
+t.test(mstng,lmbgn,var.equal = TRUE)
+```
+Therefore, Concluding from the above data, we fail to reject the null hypothesis at 5% significance level.
+
+Ans 2)
+```{r}
+a3q2dta <- read.csv("~/Downloads/a3q2dta.csv")
+```
+i)
+```{r}
+j<-a3q2dta$invest
+i<-a3q2dta$interest
+q2_model<-lm(j~i)
+summary(q2_model)
+```
+Therefore, 
+intercept = 290.39
+slope coefficient = -2834.65
+
+ii)
+```{r}
+plot(j~i)
+abline(q2_model, lwd=2)
+```
+iii)
+```{r}
+s<-sum((fitted(q2_model)-j)^2)
+estimated_error_variance<-s/(length(i)-2)
+estimated_error_variance
+```
+iv)
+```{r}
+estimatd_var_rsc<-estimated_error_variance/sum((i-mean(i))^2)
+estimatd_var_rsc
+```
+
+v)
+```{r}
+k<-sqrt(estimatd_var_rsc)
+t<-(-2834.65+3000)/k
+t
+c_t<-qt(p=0.01,df=38,lower.tail = FALSE)
+c_t
+```

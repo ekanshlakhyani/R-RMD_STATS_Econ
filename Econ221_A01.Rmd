@@ -1,0 +1,88 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+#Econ 211- Assignment 1
+
+Ans 1. 
+  i) 
+    C~3~^5^ = 5! / 3! (5 - 3)! = 5 * 4 / 2 = 10
+    Therefore the total number of samples in the sample space are 10
+    samples will be the following:
+        {1,2,3} or {40, 80, 80} 
+        {1,2,4} or {40, 80, 60}
+        {1,2,5} or {40, 80, 20}
+        {1,3,4} or {40, 80, 60}
+        {1,3,5} or {40, 80, 20}
+        {1,4,5} or {40, 60, 20}
+        {2,3,4} or {80, 80, 60}
+        {2,3,5} or {80, 80, 20}
+        {2,4,5} or {80, 60, 20}
+        {3,4,5} or {80, 60, 20}
+        
+ii)
+    mean = x~1~+x~2~+x~3~ ... x~n~ / n
+    the sample mean of each set is as follows:
+    {40, 80, 80} = 66.66
+    {40, 80, 60} = 60
+    {40, 80, 20} = 46.66
+    {40, 80, 60} = 60
+    {40, 80, 20} = 46.66
+    {40, 60, 20} = 40
+    {80, 80, 60} = 73.33
+    {80, 80, 20} = 60
+    {80, 60, 20} = 53.33
+    {80, 60, 20} = 53.33
+    
+iii)
+    P(A) = # of outcomes in S consistent with A/ # of outcomes in S
+    P(X = 50) = 0 / 10 = 0 or 0%
+    P(X > 50) = 7 / 10 or 70%
+    
+Ans 2.
+  i)
+```{r}
+ec221_assn1 <- read.csv("ec221_assn1.csv")
+summary(ec221_assn1)
+table(ec221_assn1)
+```
+  We can see from the above exercise that the population size is 50 an the distribution of values is: 5 values of 20, 25 of 40, and 20 of 60.
+ ii)
+```{r}
+x <- ec221_assn1[,1]
+x <- as.numeric((unlist(x)))
+hist(x)
+```
+    8 bins are used in the histogram, I think the number of bins is appropriate as: there are not too less a bins(here there are only three values as the variable x and all are in separate bins); also there are not too many bins as we have depicted the spread in the values, and the lack of values in between. 
+    The addition of any more bins will add unecessary white space and make the histogram less readable.
+    The subtraction of bins will make the variance and the distribution of values less clear. The histogram then will neglect the lack of values between the given three values.
+  iii)
+```{r}
+choose(50,3)
+```
+Therefore 19600 distinct samples can be formed.
+  iv) 
+    The only values the sample mean can take our 
+    {20, 
+    40,
+    60, 
+    33.33, 
+    26.66, 
+    46.66, 
+    53.33}
+    
+v) The total number of cases here is: C~3~^50^ = 19600(we got this in part iii).
+The cases where the sample is {60, 60, 60} will have a sample mean over 50. And these will be:
+C~3~^20^
+```{r}
+choose(20,3)
+```
+therefore C~3~^20^= 
+The cases where the sample is {60, 60, 40} will have a sample mean over 50. And these will be:
+(C~2~^20^)*(C~1~^25^)
+```{r}
+choose(20,2)
+choose(25,1)
+```
+therefore (C~2~^20^)*(C~1~^25^) =
